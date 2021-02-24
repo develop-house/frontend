@@ -1,7 +1,20 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
+
 import globalStyles from '../globalStyles';
+import rootReducer, { rootSaga } from '../store';
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+sagaMiddleware.run(rootSaga);
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -14,7 +27,9 @@ const App = ({ Component, pageProps }) => {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
       </Head>
       {globalStyles}
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </>
   );
 };
