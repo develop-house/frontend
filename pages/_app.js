@@ -1,11 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-
-App.propTypes = {
-  Component: PropTypes.func.isRequired,
-  pageProps: PropTypes.any.isRequired,
-};
+import globalStyles from '../globalStyles';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -17,9 +13,15 @@ const App = ({ Component, pageProps }) => {
         ></meta>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
       </Head>
+      {globalStyles}
       <Component {...pageProps} />
     </>
   );
+};
+
+App.propTypes = {
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.any,
 };
 
 export default App;
