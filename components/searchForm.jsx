@@ -21,14 +21,17 @@ const buttonStyle = css`
   border-width: 0.01rem;
 `;
 
-const SearchForm = () => {
+const SearchForm = ({ handleClickSearch }) => {
   const formRef = createRef();
   const inputRef = createRef();
 
   const handleSubmit = (event) => {
-    console.log(inputRef.current.value);
+    const word = inputRef.current.value;
     event.preventDefault();
     formRef.current.reset();
+
+    //여기다가 받은 word를 바탕으로 search
+    handleClickSearch(word);
   };
 
   return (
