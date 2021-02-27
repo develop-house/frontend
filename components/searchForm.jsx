@@ -1,5 +1,7 @@
 import React, { createRef } from 'react';
 import { jsx, css } from '@emotion/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const formStyle = css`
   display: flex;
@@ -9,16 +11,23 @@ const formStyle = css`
 
 const inputStyle = css`
   flex: 1;
-  border-radius: 0.5rem;
+  border-radius: 0.1rem;
   border-color: black;
   border-width: 0.01rem;
 `;
 
 const buttonStyle = css`
-  background-color: yellowgreen;
+  background-color: #636e72;
   margin-left: 0.1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.1rem;
   border-width: 0.01rem;
+
+  outline: none;
+  border: transparent;
+`;
+
+const iconStyle = css`
+  color: #babebf;
 `;
 
 const SearchForm = ({ handleClickSearch }) => {
@@ -37,8 +46,11 @@ const SearchForm = ({ handleClickSearch }) => {
   return (
     <form ref={formRef} css={formStyle} onSubmit={handleSubmit}>
       <input ref={inputRef} css={inputStyle} name="search" type="text" />
-      <button css={buttonStyle}>submit</button>
+      <button css={buttonStyle}>
+        <FontAwesomeIcon css={iconStyle} icon={faSearch} />
+      </button>
     </form>
   );
 };
+
 export default SearchForm;

@@ -16,7 +16,7 @@ const Button = styled.button`
   outline: transparent;
   border: none;
 
-  background-color: ${(props) => (props.clicked ? '#00b894' : '#55efc4')};
+  background-color: ${(props) => (props.clicked ? '#93B4BF' : '#BABEBF')};
 `;
 
 const Search = () => {
