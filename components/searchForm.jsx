@@ -1,7 +1,35 @@
 import React, { createRef } from 'react';
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
+
+const SearchForm = ({ handleClickSearch }) => {
+  const formRef = createRef();
+  const inputRef = createRef();
+
+  const handleSubmit = (event) => {
+    const word = inputRef.current.value;
+    event.preventDefault();
+    formRef.current.reset();
+
+    //여기다가 받은 word를 바탕으로 search
+    handleClickSearch(word);
+  };
+
+  return (
+    <form ref={formRef} css={formStyle} onSubmit={handleSubmit}>
+      <input ref={inputRef} css={inputStyle} name="search" type="text" />
+      <button css={buttonStyle}>
+        <FontAwesomeIcon css={iconStyle} icon={faSearch} />
+      </button>
+    </form>
+  );
+};
+
+SearchForm.propTypes = {
+  handleClickSearch: PropTypes.func,
+};
 
 const formStyle = css`
   display: flex;
@@ -29,28 +57,5 @@ const buttonStyle = css`
 const iconStyle = css`
   color: #babebf;
 `;
-
-const SearchForm = ({ handleClickSearch }) => {
-  const formRef = createRef();
-  const inputRef = createRef();
-
-  const handleSubmit = (event) => {
-    const word = inputRef.current.value;
-    event.preventDefault();
-    formRef.current.reset();
-
-    //여기다가 받은 word를 바탕으로 search
-    handleClickSearch(word);
-  };
-
-  return (
-    <form ref={formRef} css={formStyle} onSubmit={handleSubmit}>
-      <input ref={inputRef} css={inputStyle} name="search" type="text" />
-      <button css={buttonStyle}>
-        <FontAwesomeIcon css={iconStyle} icon={faSearch} />
-      </button>
-    </form>
-  );
-};
 
 export default SearchForm;

@@ -1,23 +1,7 @@
 import React, { useState } from 'react';
 import SearchForm from '../components/searchForm';
 import SearchList from '../components/searchList';
-import { jsx, css } from '@emotion/react';
-import styled from '@emotion/styled';
-
-const buttonContainer = css`
-  display: flex;
-  justify-content: center;
-`;
-
-const Button = styled.button`
-  width: 7rem;
-  margin: 0 0.5rem 0 0.5rem;
-  cursor: pointer;
-  outline: transparent;
-  border: none;
-
-  background-color: ${(props) => (props.clicked ? '#93B4BF' : '#BABEBF')};
-`;
+import SearchCategoryBtn from '../components/searchCategoryBtn';
 
 const Search = () => {
   const [keyword, setKeyword] = useState('');
@@ -51,14 +35,10 @@ const Search = () => {
   return (
     <>
       <SearchForm handleClickSearch={handleClickSearch} />
-      <div css={buttonContainer}>
-        <Button clicked={category === 'people'} onClick={handleClickCategory}>
-          people
-        </Button>
-        <Button clicked={category === 'club'} onClick={handleClickCategory}>
-          club
-        </Button>
-      </div>
+      <SearchCategoryBtn
+        category={category}
+        handleClickCategory={handleClickCategory}
+      />
       <SearchList
         resultDatas={
           category === 'people' ? resultDatas.people : resultDatas.club
