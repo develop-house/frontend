@@ -1,7 +1,8 @@
 import React from 'react';
+import Feed from './feed';
 
 const Home = () => {
-  return <div>Home</div>;
+  return <Feed />;
 };
 
 export default Home;
