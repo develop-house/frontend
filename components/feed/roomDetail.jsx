@@ -4,19 +4,25 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const RoomDetail = () => {
+const RoomDetail = ({ img, name, attender }) => {
   return (
     <li css={liStyle}>
-      <img css={imgStyle} src="/room.jpg" alt="room img" />
+      <img css={imgStyle} src={img} alt="room img" />
       <div css={infoStyle}>
-        <span css={roomNameStyle}>roomName</span>
+        <span css={roomNameStyle}>{name}</span>
         <span css={stateStyle}>
           <FontAwesomeIcon icon={faUser} />
-          &nbsp;참가자
+          &nbsp;{attender}
         </span>
       </div>
     </li>
   );
+};
+
+RoomDetail.propTypes = {
+  img: PropTypes.string,
+  name: PropTypes.string,
+  attender: PropTypes.number,
 };
 
 const liStyle = css`

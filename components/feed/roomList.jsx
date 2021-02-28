@@ -3,17 +3,23 @@ import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import RoomDetail from './roomDetail';
 
-const RoomList = () => {
+const RoomList = ({ rooms }) => {
   return (
     <ul css={ulStyle}>
-      <RoomDetail />
-      <RoomDetail />
-      <RoomDetail />
-      <RoomDetail />
-      <RoomDetail />
-      <RoomDetail />
+      {rooms.map((room, idx) => (
+        <RoomDetail
+          key={idx}
+          img={room.img}
+          name={room.name}
+          attender={room.attender}
+        />
+      ))}
     </ul>
   );
+};
+
+RoomList.propTypes = {
+  rooms: PropTypes.array,
 };
 
 const ulStyle = css`
