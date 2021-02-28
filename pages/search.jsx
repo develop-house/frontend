@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import SearchForm from '../components/searchForm';
-import SearchList from '../components/searchList';
-import SearchCategoryBtn from '../components/searchCategoryBtn';
+import InputForm from '../components/search/inputForm';
+import SearchList from '../components/search/searchList';
+import CategoryBtn from '../components/search/categoryBtn';
 
 const Search = () => {
   const [keyword, setKeyword] = useState('');
@@ -34,8 +34,8 @@ const Search = () => {
 
   return (
     <>
-      <SearchForm handleClickSearch={handleClickSearch} />
-      <SearchCategoryBtn
+      <InputForm handleClickSearch={handleClickSearch} />
+      <CategoryBtn
         category={category}
         handleClickCategory={handleClickCategory}
       />

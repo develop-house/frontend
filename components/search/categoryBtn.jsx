@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-const SearchCategoryBtn = ({ category, handleClickCategory }) => {
+const CategoryBtn = ({ category, handleClickCategory }) => {
   return (
     <div css={buttonContainer}>
       <Button clicked={category === 'people'} onClick={handleClickCategory}>
@@ -16,7 +16,7 @@ const SearchCategoryBtn = ({ category, handleClickCategory }) => {
   );
 };
 
-SearchCategoryBtn.propTypes = {
+CategoryBtn.propTypes = {
   category: PropTypes.string,
   handleClickCategory: PropTypes.func,
 };
@@ -36,4 +36,4 @@ const Button = styled.button`
   background-color: ${(props) => (props.clicked ? '#93B4BF' : '#BABEBF')};
 `;
 
-export default SearchCategoryBtn;
+export default CategoryBtn;

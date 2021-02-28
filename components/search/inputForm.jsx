@@ -1,12 +1,12 @@
-import React, { createRef } from 'react';
+import React, { useRef } from 'react';
 import { css } from '@emotion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
-const SearchForm = ({ handleClickSearch }) => {
-  const formRef = createRef();
-  const inputRef = createRef();
+const InputForm = ({ handleClickSearch }) => {
+  const formRef = useRef();
+  const inputRef = useRef();
 
   const handleSubmit = (event) => {
     const word = inputRef.current.value;
@@ -27,7 +27,7 @@ const SearchForm = ({ handleClickSearch }) => {
   );
 };
 
-SearchForm.propTypes = {
+InputForm.propTypes = {
   handleClickSearch: PropTypes.func,
 };
 
@@ -58,4 +58,4 @@ const iconStyle = css`
   color: #babebf;
 `;
 
-export default SearchForm;
+export default InputForm;
