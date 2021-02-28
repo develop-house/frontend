@@ -11,24 +11,54 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
+  const handleClickSearch = () => {
+    console.log('handleClickSearch');
+    //=> search page로
+  };
+
+  const handleClickCalendar = () => {
+    console.log('handleClickCalendar');
+    //=> calendar page로
+  };
+
+  const handleClickAlarm = () => {
+    console.log('handleClickAlarm');
+    //=> alarm page로
+  };
+
+  const handleClickSetting = () => {
+    console.log('handleClickSetting');
+    //=> setting page로
+  };
+
+  const handleClickFriend = () => {
+    console.log('handleClickFriend');
+    //=> friend page로
+  };
+
+  const handleClickProfile = () => {
+    console.log('handleClickProfile');
+    //=> profile page로
+  };
+
   return (
     <ul css={ulStyle}>
-      <button css={buttonStyle}>
+      <button css={buttonStyle} onClick={handleClickSearch}>
         <FontAwesomeIcon icon={faSearch} />
       </button>
-      <button css={buttonStyle}>
+      <button css={buttonStyle} onClick={handleClickCalendar}>
         <FontAwesomeIcon icon={faCalendarAlt} />
       </button>
-      <button css={buttonStyle}>
+      <button css={buttonStyle} onClick={handleClickAlarm}>
         <FontAwesomeIcon icon={faBell} />
       </button>
-      <button css={buttonStyle}>
+      <button css={buttonStyle} onClick={handleClickSetting}>
         <FontAwesomeIcon icon={faCog} />
       </button>
-      <button css={buttonStyle}>
+      <button css={buttonStyle} onClick={handleClickFriend}>
         <FontAwesomeIcon icon={faUsers} />
       </button>
-      <button css={buttonStyle}>
+      <button css={buttonStyle} onClick={handleClickProfile}>
         <FontAwesomeIcon icon={faUser} />
       </button>
     </ul>
