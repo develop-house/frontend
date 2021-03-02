@@ -1,8 +1,12 @@
 import React from 'react';
-import Feed from './feed';
+import Search from './search';
 
 const Home = () => {
-  return <Feed />;
+  return (
+    <div>
+      <Search />
+    </div>
+  );
 };
 
 export default Home;
