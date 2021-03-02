@@ -6,8 +6,8 @@ import CalendarDetail from './calendarDetail';
 const CalendarList = ({ events }) => {
   return (
     <ul css={ulStyle}>
-      {events.map((event, idx) => (
-        <CalendarDetail key={idx} time={event.time} info={event.info} />
+      {events.map((event) => (
+        <CalendarDetail key={event.id} time={event.time} info={event.info} />
       ))}
     </ul>
   );

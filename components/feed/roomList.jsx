@@ -6,9 +6,9 @@ import RoomDetail from './roomDetail';
 const RoomList = ({ rooms }) => {
   return (
     <ul css={ulStyle}>
-      {rooms.map((room, idx) => (
+      {rooms.map((room) => (
         <RoomDetail
-          key={idx}
+          key={room.id}
           img={room.img}
           name={room.name}
           attender={room.attender}
