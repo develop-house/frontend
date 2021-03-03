@@ -5,6 +5,7 @@ import { END } from 'redux-saga';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import globalStyles from '../globalStyles';
 import wrapper from '../store/configureStore';
@@ -23,6 +24,7 @@ const App = ({ Component, pageProps }) => {
         <title>devhoust</title>
       </Head>
       {globalStyles}
+      <CssBaseline />
       <Component {...pageProps} />
     </>
   );
