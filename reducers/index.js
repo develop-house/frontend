@@ -1,5 +1,7 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
+import search from './search';
+
 // (이전상태, 액션) => 다음상태
 const rootReducer = combineReducers({
   index: (state = {}, action) => {
@@ -10,6 +12,7 @@ const rootReducer = combineReducers({
         return state;
     }
   },
+  search,
 });
 
 export default rootReducer;

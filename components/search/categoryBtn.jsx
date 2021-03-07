@@ -1,15 +1,32 @@
 import React from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const CategoryBtn = ({ category, handleClickCategory }) => {
+  const classes = useStyles();
   return (
-    <div css={buttonContainer}>
-      <Button clicked={category === 'people'} onClick={handleClickCategory}>
+    <div className={classes.root}>
+      <Button
+        disabled={category === 'people'}
+        size="small"
+        className={classes.button}
+        variant="contained"
+        onClick={() => {
+          handleClickCategory('people');
+        }}
+      >
         people
       </Button>
-      <Button clicked={category === 'club'} onClick={handleClickCategory}>
+      <Button
+        disabled={category === 'club'}
+        size="small"
+        className={classes.button}
+        variant="contained"
+        onClick={() => {
+          handleClickCategory('club');
+        }}
+      >
         club
       </Button>
     </div>
@@ -21,19 +38,16 @@ CategoryBtn.propTypes = {
   handleClickCategory: PropTypes.func,
 };
 
-const buttonContainer = css`
-  display: flex;
-  justify-content: center;
-`;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
 
-const Button = styled.button`
-  width: 7rem;
-  margin: 0 0.5rem 0 0.5rem;
-  cursor: pointer;
-  outline: transparent;
-  border: none;
-
-  background-color: ${(props) => (props.clicked ? '#93B4BF' : '#BABEBF')};
-`;
+  button: {
+    margin: theme.spacing(1),
+    textTransform: 'none',
+  },
+}));
 
 export default CategoryBtn;
