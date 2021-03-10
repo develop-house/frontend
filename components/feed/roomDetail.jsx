@@ -1,21 +1,41 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { makeStyles } from '@material-ui/core/styles';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import PersonIcon from '@material-ui/icons/Person';
 
 const RoomDetail = ({ img, name, attender }) => {
+  const classes = useStyles();
   return (
-    <li css={liStyle}>
-      <img css={imgStyle} src={img} alt="room img" />
-      <div css={infoStyle}>
-        <span css={roomNameStyle}>{name}</span>
-        <span css={stateStyle}>
-          <FontAwesomeIcon icon={faUser} />
-          &nbsp;{attender}
-        </span>
-      </div>
-    </li>
+    <>
+      <ListItem alignItems="flex-start">
+        <ListItemAvatar>
+          <Avatar alt="Remy Sharp" src="/profile.png" />
+        </ListItemAvatar>
+        <ListItemText
+          primary={name}
+          secondary={
+            <React.Fragment>
+              <Typography
+                component="span"
+                variant="body2"
+                className={classes.inline}
+                color="textPrimary"
+              >
+                <PersonIcon />
+                {attender}
+              </Typography>
+            </React.Fragment>
+          }
+        />
+      </ListItem>
+      <Divider variant="middle" component="li" />
+    </>
   );
 };
 
@@ -25,36 +45,13 @@ RoomDetail.propTypes = {
   attender: PropTypes.number,
 };
 
-const liStyle = css`
-  background-color: #bfa180;
-  display: flex;
-  width: 90%;
-  margin: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-radius: 0.1rem;
-`;
-
-const imgStyle = css`
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  margin: 1rem;
-`;
-
-const infoStyle = css`
-  display: flex;
-  flex-direction: column;
-`;
-
-const roomNameStyle = css`
-  color: #000000;
-  margin: 0.5rem 0 0.5rem 0;
-`;
-
-const stateStyle = css`
-  color: #636e72;
-  font-size: 0.8rem;
-`;
+const useStyles = makeStyles(() => ({
+  inline: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    color: 'gray',
+  },
+}));
 
 export default RoomDetail;

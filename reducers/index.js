@@ -1,6 +1,8 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
 import search from './search';
+import event from './event';
+import room from './room';
 
 // (이전상태, 액션) => 다음상태
 const rootReducer = combineReducers({
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
     }
   },
   search,
+  event,
+  room,
 });
 
 export default rootReducer;

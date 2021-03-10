@@ -1,11 +1,13 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import RoomDetail from './roomDetail';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
 
 const RoomList = ({ rooms }) => {
+  const classes = useStyles();
   return (
-    <ul css={ulStyle}>
+    <List className={classes.root}>
       {rooms.map((room) => (
         <RoomDetail
           key={room.id}
@@ -14,7 +16,7 @@ const RoomList = ({ rooms }) => {
           attender={room.attender}
         />
       ))}
-    </ul>
+    </List>
   );
 };
 
@@ -22,17 +24,18 @@ RoomList.propTypes = {
   rooms: PropTypes.array,
 };
 
-const ulStyle = css`
-  list-style: none;
-  background-color: #babebf;
-  width: 80%;
-  height: 40vh;
-  padding: 0;
-  margin: auto;
-  margin-top: 3rem;
-  border-radius: 0.1rem;
-
-  overflow-y: scroll;
-`;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    listStyle: 'none',
+    backgroundColor: '#babebf',
+    width: '80%',
+    height: '15rem',
+    padding: '0',
+    margin: 'auto',
+    marginTop: theme.spacing(4),
+    borderRadius: '0.1rem',
+    overflowY: 'scroll',
+  },
+}));
 
 export default RoomList;

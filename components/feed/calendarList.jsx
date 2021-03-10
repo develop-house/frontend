@@ -1,15 +1,17 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import CalendarDetail from './calendarDetail';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
 
 const CalendarList = ({ events }) => {
+  const classes = useStyles();
   return (
-    <ul css={ulStyle}>
+    <List className={classes.root}>
       {events.map((event) => (
         <CalendarDetail key={event.id} time={event.time} info={event.info} />
       ))}
-    </ul>
+    </List>
   );
 };
 
@@ -17,16 +19,17 @@ CalendarList.propTypes = {
   events: PropTypes.array,
 };
 
-const ulStyle = css`
-  list-style: none;
-  background-color: #93b4bf;
-  width: 80%;
-  height: 20vh;
-  padding: 0;
-  margin: auto;
-  border-radius: 0.1rem;
-
-  overflow-y: scroll;
-`;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    margin: 'auto',
+    marginTop: theme.spacing(1),
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '80%',
+    height: '10rem',
+    backgroundColor: theme.palette.background.paper,
+    overflowY: 'scroll',
+  },
+}));
 
 export default CalendarList;
